@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block head %}
+    {{ super() }}
+    <title>Productos</title>
+{% endblock %}
+
+{% block content %}
+    <h3>Listado de productos</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>
+                    <a href="{{url_for('edit', product_id=product.id)}}" class="d-inline me-2 btn btn-primary">
+                        Editar
+                    </a>
+                    <form action="{{url_for('destroy', product_id=product.id)}}" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

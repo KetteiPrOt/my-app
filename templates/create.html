@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block head %}
+    {{ super() }}
+    <title>Crear Producto</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-4">
+        <h3>Crear producto</h3>
+
+        <form style="max-width: 500px;" action="{{url_for('store')}}" method="POST">
+            <label for="nameInput">
+                Nombre
+            </label>
+
+            <input type="text" name="name" required id="nameInput" class="form-control" />
+
+            <button class="mt-2 btn btn-primary">
+                Guardar
+            </button>
+        </form>
+    </div>
+    </div>
+{% endblock %}
